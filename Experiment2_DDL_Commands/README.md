@@ -1,4 +1,6 @@
 # Experiment 2: DDL Commands
+## NAME: VIJAYAKUMAR S
+## REG NO: 212224040359
 
 ## AIM
 To study and implement DDL commands and different types of constraints.
@@ -105,123 +107,191 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+-- Create a table named Department with the following constraints:
+DepartmentID as INTEGER should be the primary key.
+DepartmentName as TEXT should be unique and not NULL.
+Location as TEXT.
 
 ```sql
--- Paste your SQL code below for Question 1
+CREATE TABLE Department(
+    DepartmentID INTEGER PRIMARY KEY,
+    DepartmentName TEXT UNIQUE NOT NULL,
+    Location TEXT
+);
 ```
 
 **Output:**
+<img width="1163" height="299" alt="image" src="https://github.com/user-attachments/assets/7c46ff7c-49c2-4155-9b57-1b4164384ed4" />
 
-![Output1](output.png)
 
 **Question 2**
 ---
--- Paste Question 2 here
+Insert a record with EmployeeID 001, Name Sarah Parker, Position Manager, Department HR, and Salary 60000 into the Employee table.
 
 ```sql
--- Paste your SQL code below for Question 2
+INSERT INTO Employee(EmployeeID, Name, Position, Department, Salary) VALUES
+(001,'Sarah Parker','Manager','HR',60000);
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1156" height="252" alt="image" src="https://github.com/user-attachments/assets/c4374eaa-37b2-4979-9101-4f35d126cba0" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Insert all employees from Former_employees into Employee
+
+Table attributes are EmployeeID, Name, Department, Salary
 
 ```sql
--- Paste your SQL code below for Question 3
+INSERT INTO Employee(EmployeeID, Name, Department, Salary)
+SELECT EmployeeID, Name, Department, Salary
+FROM Former_employees;
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1161" height="304" alt="image" src="https://github.com/user-attachments/assets/4fbb64f2-3185-4ee6-ac63-4198be3c4f7d" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+Create a table named Orders with the following constraints:
+OrderID as INTEGER should be the primary key.
+OrderDate as DATE should be not NULL.
+CustomerID as INTEGER should be a foreign key referencing Customers(CustomerID).
 
 ```sql
--- Paste your SQL code below for Question 4
+CREATE TABLE Orders(
+    OrderID INTEGER PRIMARY KEY,
+    OrderDate Date not null,
+    CustomerID Integer,
+    Foreign key (CustomerID) REFERENCES Customers(CustomerID)
+);
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1160" height="303" alt="image" src="https://github.com/user-attachments/assets/788165f6-6242-4cd9-bcc5-841d5139605b" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Create a table named ProjectAssignments with the following constraints:
+AssignmentID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+ProjectID as INTEGER should be a foreign key referencing Projects(ProjectID).
+AssignmentDate as DATE should be NOT NULL.
 
 ```sql
--- Paste your SQL code below for Question 5
+CREATE TABLE ProjectAssignments(
+    AssignmentID INTEGER PRIMARY KEY,
+    EmployeeID INTEGER,
+    ProjectID INTEGER, 
+    AssignmentDate DATE NOT NULL ,
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID),
+    FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID)
+);
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1157" height="300" alt="image" src="https://github.com/user-attachments/assets/054bae8f-abc0-4c37-bcdb-bafd67053c6a" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL query to add a column named Date_of_birth as Date in the Student_details table.
 
 ```sql
--- Paste your SQL code below for Question 6
+ALTER TABLE Student_details
+ADD COLUMN Date_of_birth Date;
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1157" height="383" alt="image" src="https://github.com/user-attachments/assets/746a1626-0c07-4704-9352-5b98f724ce69" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Create a table named Bonuses with the following constraints:
+BonusID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+BonusAmount as REAL should be greater than 0.
+BonusDate as DATE.
+Reason as TEXT should not be NULL.
 
 ```sql
--- Paste your SQL code below for Question 7
+CREATE TABLE Bonuses(
+    BonusID INTEGER PRIMARY KEY,
+    EmployeeID INTEGER,
+    BonusAmount REAL CHECK (BonusAmount > 0),
+    BonusDate DATE,
+    Reason TEXT NOT NULL,
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1161" height="298" alt="image" src="https://github.com/user-attachments/assets/b92fd76b-fcdb-4a2b-b4c4-e98fd186716c" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Insert the following students into the Student_details table:
+
+| RollNo | Name        | Gender | Subject     | Marks |
+|-------:|-------------|:------:|-------------|------:|
+| 202    | Ella King   | F      | Chemistry   | 87    |
+| 203    | James Bond  | M      | Literature  | 78    |
 
 ```sql
--- Paste your SQL code below for Question 8
+INSERT INTO Student_details(RollNo, Name, Gender, Subject,MARKS) VALUES
+(202,'Ella King','F','Chemistry',87),
+(203,'James Bond','M','Literature',78);
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1157" height="280" alt="image" src="https://github.com/user-attachments/assets/f9f3f640-341f-4b22-8709-32067a642760" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Create a table named Tasks with the following columns:
 
+TaskID as INTEGER
+TaskName as TEXT
+DueDate as DATE
 ```sql
--- Paste your SQL code below for Question 9
+CREATE TABLE Tasks(
+    TaskID INTEGER,
+    TaskName TEXT,
+    DueDate DATE
+);
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1157" height="395" alt="image" src="https://github.com/user-attachments/assets/76766d35-6b9a-4bc0-a4f8-814adb748078" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write a SQL Query to add an attribute designation in the employee table with the data type VARCHAR(50).
+
 
 ```sql
--- Paste your SQL code below for Question 10
+ALTER TABLE employee
+ADD COLUMN designation varchar(50);
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1157" height="302" alt="image" src="https://github.com/user-attachments/assets/ddbae381-e131-4006-8639-f41a9c90d41e" />
 
 
 ## RESULT
