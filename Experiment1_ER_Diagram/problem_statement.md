@@ -1,4 +1,6 @@
 # ER Diagram Workshop – Submission Template
+## NAME: VIJAYAKUMAR S
+## REG NO: 212224040359
 
 ## Objective
 To understand and apply ER modeling concepts by creating ER diagrams for real-world applications.
@@ -23,7 +25,8 @@ FlexiFit Gym wants a database to manage its members, trainers, and fitness progr
 
 ### ER Diagram:
 *Paste or attach your diagram here*  
-![ER Diagram](er_diagram_fitness.png)
+![ER Diagram]<img width="1070" height="548" alt="image" src="https://github.com/user-attachments/assets/18f40c8e-040d-451a-85d9-567868a915e9" />
+
 
 ### Entities and Attributes
 
