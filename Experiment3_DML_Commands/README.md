@@ -1,5 +1,6 @@
 # Experiment 3: DML Commands
-
+## NAME: VIJAYAKUMAR S
+## REG NO: 212224040359
 ## AIM
 To study and implement DML (Data Manipulation Language) commands.
 
@@ -46,124 +47,163 @@ Used to retrieve records from a table.
 SELECT column1, column2 FROM table_name WHERE condition;
 ```
 **Question 1**
---
--- Paste Question 1 here
+Write a SQL statement to Update the product_name to 'Premium Bread' whose product ID is 5 in the products table.
 
 ```sql
--- Paste your SQL code below for Question 1
+UPDATE products
+SET product_name = 'Premium Bread' WHERE product_id = 5;
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1187" height="383" alt="image" src="https://github.com/user-attachments/assets/3de770f0-fc55-439e-8572-b4388a9bb835" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+Write a SQL statement to Update the reorder level to 20 where the quantity in stock is less than 10 and product category is 'Snacks' in the products table.
 
 ```sql
--- Paste your SQL code below for Question 2
+UPDATE products
+SET reorder_lvl = 20
+WHERE quantity < 10
+AND category = 'Snacks';
 ```
 
 **Output:**
+<img width="1186" height="549" alt="image" src="https://github.com/user-attachments/assets/af793d93-6f4b-4289-9a6a-52a3a86fa3ea" />
 
-![Output2](output.png)
 
 **Question 3**
 ---
--- Paste Question 3 here
+Write a SQL statement to Increase the selling price by 10% for all products in the 'Bakery' category in the products table.
 
 ```sql
--- Paste your SQL code below for Question 3
+UPDATE Products
+SET sell_price = sell_price * 1.10
+WHERE category = 'Bakery';
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1191" height="502" alt="image" src="https://github.com/user-attachments/assets/c750da8d-af04-4f4f-9cf3-60c92b5a6c85" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write a SQL statement to Double the salary for employees in department 20 who have a job_id ending with 'MAN'
 
 ```sql
--- Paste your SQL code below for Question 4
+UPDATE Employees
+SET salary = salary * 2
+WHERE job_id LIKE '%MAN';
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1191" height="339" alt="image" src="https://github.com/user-attachments/assets/f7ab1825-6c2a-49d9-888b-e171352c887a" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Increase the selling price per unit by 3 for all products supplied by supplier ID 4 in the sales table.
 
 ```sql
--- Paste your SQL code below for Question 5
+UPDATE SALES
+SET sell_price = sell_price + 3
+WHERE product_id IN (SELECT product_id FROM products
+WHERE supplier_id = 4);
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1191" height="357" alt="image" src="https://github.com/user-attachments/assets/090161ba-72e3-46e1-a93d-271251237bb8" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL query to Delete customers with following conditions
+
+   1.'CUST_COUNTRY' is not in a list of specified countries ('UK', 'USA', 'Canada')
+
+   2.'GRADE' is greater than or equal to 3
 
 ```sql
--- Paste your SQL code below for Question 6
+DELETE FROM Customer WHERE
+ CUST_COUNTRY NOT IN ('UK','USA','Canada')
+AND GRADE >= 3;
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1190" height="407" alt="image" src="https://github.com/user-attachments/assets/e6468dbb-27d0-4c26-b3ca-310d8361507a" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Write a SQL query to delete a specific doctor from Doctors table whose ID is 1.
+
+
 
 ```sql
--- Paste your SQL code below for Question 7
+DELETE FROM Doctors WHERE doctor_id = 1;
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1195" height="256" alt="image" src="https://github.com/user-attachments/assets/3819535d-bce6-4156-833b-d73e6d28f210" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Show the categoryName and description from the categories table sorted by categoryName.
 
 ```sql
--- Paste your SQL code below for Question 8
+SELECT categoryName, description FROM categories
+ ORDER BY categoryName;
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1155" height="586" alt="image" src="https://github.com/user-attachments/assets/f4ed5726-04e2-4cbc-accb-67d84d92647d" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write a SQL query to Select all patients who were admitted during the year 2023.
+
+
 
 ```sql
--- Paste your SQL code below for Question 9
+SELECT patient_id, first_name, admission_date FROM Patients
+WHERE admission_date BETWEEN '2023-01-01' AND '2023-12-31';
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1154" height="351" alt="image" src="https://github.com/user-attachments/assets/bf3a18e2-71a0-4956-82b7-032e5e284b81" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write a SQL query to assess the performance of value2 as 'Poor', 'Average', or 'Excellent' based on whether it is less than 30, between 30 and 70, or greater than 70 in the Calculations table
 
 ```sql
--- Paste your SQL code below for Question 10
+SELECT 
+    id,
+    value2,
+    CASE
+        WHEN value2 < 30 THEN 'Poor'
+        WHEN value2 BETWEEN 30 AND 70 THEN 'Average'
+        ELSE 'Excellent'
+    END AS performance
+FROM Calculations;
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1151" height="458" alt="image" src="https://github.com/user-attachments/assets/de142e3e-cd34-4b47-91be-59d41d5e25db" />
+
 
 ## RESULT
 Thus, the SQL queries to implement DML commands have been executed successfully.
