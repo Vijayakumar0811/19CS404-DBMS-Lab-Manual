@@ -1,5 +1,9 @@
 # Experiment 4: Aggregate Functions, Group By and Having Clause
 
+## NAME: VIJAYAKUMAR S
+
+## REG NO: 212224040359
+
 ## AIM
 To study and implement aggregate functions, GROUP BY, and HAVING clause with suitable examples.
 
@@ -38,123 +42,138 @@ HAVING condition;
 
 **Question 1**
 --
--- Paste Question 1 here
+How many medical records are there for each patient?
 
 ```sql
--- Paste your SQL code below for Question 1
+SELECT PatientID, count(RecordID) as TotalRecords from MedicalRecords
+Group By PatientID;
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1156" height="698" alt="image" src="https://github.com/user-attachments/assets/68e96509-d07c-4e92-97d0-4fde6ea6a0e5" />
 
 **Question 2**
 ---
--- Paste Question 2 here
+What is the count of male and female patients?
 
 ```sql
--- Paste your SQL code below for Question 2
+Select Gender, Count(Gender) as TotalPatients
+ from Patients
+group by Gender;
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1144" height="377" alt="image" src="https://github.com/user-attachments/assets/4a434fee-b4cf-4ec9-9d99-43c85fdbb343" />
 
 **Question 3**
----
--- Paste Question 3 here
+How many prescriptions were written for each medication?
 
 ```sql
--- Paste your SQL code below for Question 3
+SELECT Medication, count(Medication) as TotalPrescriptions 
+from Prescriptions group by Medication;
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1149" height="801" alt="image" src="https://github.com/user-attachments/assets/5777284e-7b74-4a62-bbcd-56282da3be05" />
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write a SQL query to find the total amount of fruits with a unit type of 'LB'.
 
+Note: Inventory attribute contains amount of fruits
 ```sql
--- Paste your SQL code below for Question 4
+SELECT sum(inventory) as total from fruits where unit = 'LB' ;
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1150" height="324" alt="image" src="https://github.com/user-attachments/assets/b54d831c-55ef-4592-ac1c-94cf13ba3559" />
 
 **Question 5**
 ---
--- Paste Question 5 here
-
+Write a SQL query to  find the average salary of all employees?
 ```sql
--- Paste your SQL code below for Question 5
+Select avg(income) as Average_Salary from employee;
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1150" height="325" alt="image" src="https://github.com/user-attachments/assets/d6794498-aecf-4cec-a625-ee3c4e3d1732" />
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL query to determine the number of customers who received at least one grade for their activity.
+
 
 ```sql
--- Paste your SQL code below for Question 6
+Select COUNT(customer_id) as COUNT from customer
+ where grade >= 1;
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1148" height="322" alt="image" src="https://github.com/user-attachments/assets/6a5f4dcb-b3fe-464e-a59a-6732546dfa6e" />
 
 **Question 7**
 ---
--- Paste Question 7 here
+Write a SQL query to find the shortest email address in the customer table?
+
 
 ```sql
--- Paste your SQL code below for Question 7
+Select name , email, Length(email) as min_email_length 
+from customer
+order by Length(email) limit 1;
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1147" height="324" alt="image" src="https://github.com/user-attachments/assets/e1efc647-64b2-40d7-bc9b-d226b8aa1076" />
 
 **Question 8**
 ---
--- Paste Question 8 here
+Write the SQL query that achieves the grouping of data by age, calculates the minimum income for each age group, and includes only those age groups where the minimum income is less than 400,000.
 
 ```sql
--- Paste your SQL code below for Question 8
+Select age, MIN(income) from employee
+group by age
+having min(income) < 400000;
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1149" height="397" alt="image" src="https://github.com/user-attachments/assets/b1b74a08-ae89-4412-bb88-2038bb8128de" />
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write the SQL query that achieves the selection of category and calculates the sum of the product of price and category ID as Revenue for each category from the "products" table, and includes only those products where the total revenue is greater than 25.
 
 ```sql
--- Paste your SQL code below for Question 9
+SELECT category_id , sum(price*category_id) as Revenue 
+from products 
+group by category_id
+having Revenue > 25;
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1145" height="456" alt="image" src="https://github.com/user-attachments/assets/8207a89f-ee3a-48b3-99a3-089016591605" />
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write the SQL query that achieves the grouping of data by city, calculates the average income for each city, and includes only those cities where the average income is greater than 500,000.
 
 ```sql
--- Paste your SQL code below for Question 10
+SELECT city, AVG(income) from employee
+group by city
+having AVG(income) > 500000;
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1148" height="455" alt="image" src="https://github.com/user-attachments/assets/42e359cb-6922-4234-a903-25f29b7e6633" />
 
 
 ## RESULT
