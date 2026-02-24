@@ -24,32 +24,47 @@ FlexiFit Gym wants a database to manage its members, trainers, and fitness progr
 - Payments tracked for memberships and sessions.
 
 ### ER Diagram:
-*Paste or attach your diagram here*  
+
 ![ER Diagram]<img width="1070" height="548" alt="image" src="https://github.com/user-attachments/assets/18f40c8e-040d-451a-85d9-567868a915e9" />
 
 
 ### Entities and Attributes
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+
+| Entity       | Attributes (PK, FK)                                                    | Notes                                     |
+| ------------ | ---------------------------------------------------------------------- | ----------------------------------------- |
+|   Trainer    |   Trainer_ID (PK)  , Trainer_Name, Phone, Specialization               | One trainer can conduct multiple sessions |
+|   Members    |   Member_ID (PK)  , Name, Phone_No, Member_Type, Start_Date            | Members attend sessions and make payments |
+|   Session    |   Session_ID (PK)  , Date, Time, Duration, Attendance, Trainer_ID (FK) | Conducted by one trainer                  |
+|   Programs   |   Program_ID (PK)  , Program_Name, Fee                                 | Members join programs                     |
+|   Payment    |   Payment_ID (PK)  , Payment_Date, Amount, Member_ID (FK)              | Each payment belongs to one member        |
+
 
 ### Relationships and Constraints
 
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+| Relationship                   | Cardinality | Participation    | Notes                                 |
+| ------------------------------ | ----------- | ---------------- | ------------------------------------- |
+|   Training   (Trainer–Members) | 1 : M       | Partial          | One trainer trains many members       |
+|   Conducts   (Trainer–Session) | 1 : M       | Total on Session | Each session must have one trainer    |
+|   Attends   (Members–Session)  | M : N       | Partial          | A member can attend many sessions     |
+|   Joins   (Members–Programs)   | M : 1       | Total on Members | Each member joins one program         |
+|   Does   (Members–Payment)     | 1 : M       | Total on Payment | One member can make multiple payments |
+
 
 ### Assumptions
-- 
-- 
-- 
+Each Member has a unique Member_ID and can join only one program at a time.
+
+Each Trainer has a unique Trainer_ID and can conduct multiple sessions.
+
+Every Session is conducted by only one trainer.
+
+A Member can attend multiple sessions, and a session can have multiple members.
+
+Each Payment is made by one member, but a member can make multiple payments.
+
+Program fee is fixed and defined in the Programs entity.
+
+Phone numbers are assumed to be unique for trainers and members.
 
 ---
 
