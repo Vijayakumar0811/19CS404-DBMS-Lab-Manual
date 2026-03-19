@@ -55,123 +55,189 @@ ON table1.column = table2.column;
 
 **Question 1**
 --
--- Paste Question 1 here
+From the following tables write a SQL query to find those customers with a grade less than 300. Return cust_name, customer city, grade, Salesman, salesmancity. The result should be ordered by ascending customer_id. 
 
 ```sql
--- Paste your SQL code below for Question 1
+SELECT c.cust_name,c.city,c.grade,s.name as Salesman, s.city
+FROM customer c 
+Join salesman s
+on c.salesman_id = s.salesman_id
+WHERE c.grade < 300 
+ORDER BY c.customer_id;
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1297" height="610" alt="image" src="https://github.com/user-attachments/assets/575dbd84-866b-410a-b628-61f1f4ad991c" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+Write the SQL query that achieves the selection of the "name" column from the "salesman" table (aliased as "s"), the "cust_name," "city," "grade," and "salesman_id" columns from the "customer" table (aliased as "c"), with a left join on the "salesman_id" column and a condition filtering for salesman_id values that have more than one associated customer.
 
 ```sql
--- Paste your SQL code below for Question 2
+SELECT 
+    s.name, 
+    c.cust_name, 
+    c.city, 
+    c.grade, 
+    c.salesman_id
+FROM salesman s
+LEFT JOIN customer c 
+    ON s.salesman_id = c.salesman_id
+WHERE s.salesman_id IN (
+    SELECT salesman_id
+    FROM customer
+    GROUP BY salesman_id
+    HAVING COUNT(*) > 1
+);
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1291" height="491" alt="image" src="https://github.com/user-attachments/assets/44b15ae9-b749-4ca7-af7a-d038f37b61b8" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Write the SQL query that achieves the selection of admission dates from the "patients" table and surgery dates from the "surgeries" table, with an inner join on the "patient_id" column.
 
 ```sql
--- Paste your SQL code below for Question 3
+SELECT p.admission_date , s.surgery_date
+FROM PATIENTS p
+INNER JOIN SURGERIES s
+ON p.patient_id = s.patient_id;
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1213" height="582" alt="image" src="https://github.com/user-attachments/assets/f88f6da3-2952-4017-8f3e-cf2bb6467ece" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write the SQL query that achieves the selection of the first name from the "patients" table, with an inner join on the "patient_id" column and a condition filtering for surgeries with a surgery date of '2024-01-15'.:
 
 ```sql
--- Paste your SQL code below for Question 4
+SELECT p.first_name FROM PATIENTS p
+INNER JOIN SURGERIES s
+ON p.patient_id = s.patient_id
+WHERE surgery_date = '2024-01-15';
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1217" height="420" alt="image" src="https://github.com/user-attachments/assets/fcc0aacd-6184-42eb-9845-6f932b15abfd" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL statement to make a report with customer name, city, order number, order date, and order amount in ascending order according to the order date to determine whether any of the existing customers have placed an order or not.
 
 ```sql
--- Paste your SQL code below for Question 5
+SELECT 
+    c.cust_name,
+    c.city,
+    o.ord_no,
+    o.ord_date,
+    o.purch_amt as "Order Amount"
+FROM customer c
+LEFT JOIN orders o
+    ON c.customer_id = o.customer_id
+ORDER BY o.ord_date ASC;
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1290" height="963" alt="image" src="https://github.com/user-attachments/assets/6f893e0e-a1eb-4fe9-b73c-60f7f96fd1e7" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+From the following tables write a SQL query to find those orders where the order amount exists between 500 and 2000. Return ord_no, purch_amt, cust_name, city.
 
 ```sql
--- Paste your SQL code below for Question 6
+SELECT o.ord_no,o.purch_amt,c.cust_name,c.city
+FROM orders o
+INNER join customer c
+ON o.customer_id = c.customer_id
+WHERE purch_amt between 500 and 2000;
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1260" height="423" alt="image" src="https://github.com/user-attachments/assets/48158741-f213-4384-a77f-ea3ea6816163" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+write a SQL query to find the salesperson and customer who reside in the same city. Return Salesman, cust_name and city.
 
 ```sql
--- Paste your SQL code below for Question 7
+SELECT s.name as Salesman, c.cust_name,c.city
+FROM Salesman s
+INNER JOIN customer c
+ON s.city = c.city;
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1210" height="734" alt="image" src="https://github.com/user-attachments/assets/dffcab77-b4c8-4f41-a33d-89693148d351" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Write an SQL query to retrieve all columns from the 'customer' table (aliased as 'c') using a LEFT JOIN with the 'orders' table on the 'customer_id' column, and filter the results to include only those orders placed between '2012-07-01' and '2012-07-30'.
 
 ```sql
--- Paste your SQL code below for Question 8
+SELECT 
+    c.*
+FROM customer c
+LEFT JOIN orders o
+    ON c.customer_id = o.customer_id
+WHERE o.ord_date BETWEEN '2012-07-01' AND '2012-07-30';
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1292" height="309" alt="image" src="https://github.com/user-attachments/assets/7349713b-cff3-4992-86db-8bc3c6a82336" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+From the following tables write a SQL query to display the customer name, customer city, grade, salesman, salesman city. The results should be sorted by ascending customer_id.  
 
 ```sql
--- Paste your SQL code below for Question 9
+SELECT c.cust_name, c.city, c.grade,s.name as Salesman, s.city
+FROM customer c
+INNER JOIN salesman s
+ON 
+c.salesman_id = s.salesman_id
+ORDER BY c.customer_id ASC;
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1297" height="722" alt="image" src="https://github.com/user-attachments/assets/ae2e4078-8852-4d78-99a2-f75d18d0f0f6" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write the SQL query that accomplishes the selection of the first name from the "patients" table (aliased as "patient_name") and the first name from the "doctors" table (aliased as "doctor_name"), with an inner join on the "doctor_id" column and a condition filtering for patients with a non-null discharge date.
 
 ```sql
--- Paste your SQL code below for Question 10
+SELECT p.first_name as patient_name, d.first_name as doctor_name
+FROM PATIENTS p
+INNER JOIN
+DOCTORS d
+ON p.doctor_id = d.doctor_id
+WHERE p.discharge_date IS NOT NULL;
 ```
 
 **Output:**
 
-![Output10](output.png)
+`<img width="1058" height="518" alt="image" src="https://github.com/user-attachments/assets/0667c781-4bea-4f77-a8a3-bebbb03bce54" />
+
 
 
 ## RESULT
