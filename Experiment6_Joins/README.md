@@ -1,5 +1,6 @@
 # Experiment 6: Joins
-
+## NAME: VIJAYAKUMAR S
+## REG NO: 212224040359
 ## AIM
 To study and implement different types of joins.
 
